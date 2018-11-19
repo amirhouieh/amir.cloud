@@ -4,3 +4,6 @@ env**
 .firebaserc
 .firebase
 .firebase**
+
+.idea
+.idea/*
