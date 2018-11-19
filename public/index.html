@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0029)https://portfolio.amir.cloud/ -->
 <html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,22 +16,21 @@
       </style>
 
       <script>
-
         const bluryfy = (elem, volume, color) => {
          elem.style.textShadow = `${color} 0px 0px ${~~volume}px`;
          elem.style.color = "transparent";
         };
-         
+
         const remap = (value, low1, high1, low2, high2) => {
          return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
         };
-         
+
         const calcDistance = (p1, p2) => {
          const a = p2.x - p1.x;
          const b = p2.y - p1.y;
          return Math.sqrt(a * a + b * b);
         };
-         
+
          const calcElemCenter = (elem) => {
            const rect = elem.getBoundingClientRect();
            return {
@@ -40,34 +38,34 @@
                y: rect.y+(rect.height/2),
            }
          };
-         
+
          const state = {
            thumbsCenter: [],
            updateMaxDistance: 1000
          };
-         
+
          const MIN_BLUR = 0;
          const MAX_BLUR = 75;
          const DEFAULT_BLUR = 50;
          const BODY_MARGIN = 50;
-         
+
          window.onload = () => {
            const thumbs = [].slice.call( document.querySelectorAll(".blur") );
-           
+
            const updateThumbsCenter = () => {
                state.thumbsCenter = thumbs.map(calcElemCenter);
            };
-           
+
            const updateMaxDistance = () => {
                state.maxDistance = calcDistance(
                    {x: BODY_MARGIN, y: BODY_MARGIN},
                    {x: window.innerWidth, y: window.innerHeight}
                    );
            };
-           
+
            updateThumbsCenter();
            updateMaxDistance();
-           
+
            window.onmousemove = (e) => {
                thumbs.forEach((thumb, i) => {
                    const thumbCenter = state.thumbsCenter[i];
@@ -77,33 +75,34 @@
                    bluryfy(thumb, blurVolume, "black");
                })
            }
-           
+
            window.onresize = () => {
                updateThumbsCenter();
                updateMaxDistance();
            }
          };
       </script>
-
-        <title>amir houieh / highlighted projects</title>
-        <meta name="keywords" content="amir" houieh,amirhouieh="">
-        <meta name="description" content="Highlighted projects by amir houieh.">
+        <title>amir houieh</title>
+        <meta name="keywords" content="amir houieh, amirhouieh">
+        <meta name="description" content="Amir Houieh is a digital media designer / creative coder. I explore alternative ways in which digital information has shaped our daily life in order to deliver creative solutions to individuals and educational environments in context of information consumption. I am dedicated in research and developing new methodologies, applications and platforms in digital publishing; how we consume and produce the information in digital environments.
+      Since Oct 2018, I am trying to establish my own little zone (studio/lab?) called XTXT, where I focus on self initiative projects and experiments.">
         <meta name="copyright" content="amir.cloud">
         <meta name="language" content="EN">
         <meta name="Classification" content="Design/Programming">
         <meta name="author" content="Amir, amir.houieh@gmail.com">
         <meta name="designer" content="amir houieh">
         <meta name="owner" content="amir houieh">
-        <meta name="url" content="https://projects.amir.cloud">
-        <meta name="identifier-URL" content="https://projects.amir.cloud">
-        <meta property="og:title" content="amir houieh / highlighted projects">
-        <meta property="og:url" content="https://projects.amir.cloud">
-        <meta property="og:image" content="">
-        <meta property="og:site_name" content="amir houieh">
-        <meta property="og:type" content="website">
-        <meta property="og:description" content="Highlighted projects by amir houieh.">
-        <meta name="twitter:image" content="">
-
+        <meta name="url" content="https://amir.cloud">
+        <meta name="identifier-URL" content="https://amir.cloud">
+        <meta property="og:title" content="Amir Houieh is a digital media designer / creative coder. I explore alternative ways in which digital information has shaped our daily life in order to deliver creative solutions to individuals and educational environments in context of information consumption. I am dedicated in research and developing new methodologies, applications and platforms in digital publishing; how we consume and produce the information in digital environments.
+      Since Oct 2018, I am trying to establish my own little zone (studio/lab?) called XTXT, where I focus on self initiative projects and experiments.">
+        <meta property="og:url" content="https://amir.cloud">
+        <meta property="og:image" content="https://amir.cloud/site-thumb.png">
+        <meta property="og:site_name" content="amir houieh" >
+        <meta property="og:type" content="website" >
+        <meta property="og:description" content="Amir Houieh is a digital media designer / creative coder. I explore alternative ways in which digital information has shaped our daily life in order to deliver creative solutions to individuals and educational environments in context of information consumption. I am dedicated in research and developing new methodologies, applications and platforms in digital publishing; how we consume and produce the information in digital environments.
+      Since Oct 2018, I am trying to establish my own little zone (studio/lab?) called XTXT, where I focus on self initiative projects and experiments." >
+        <meta name="twitter:image" content="https://amir.cloud/site-thumb.png">
    </head>
   <body>
 
@@ -115,7 +114,7 @@
     <br />
     <br />
     <p style="max-width: 800px;" class="">
-      Amir Houieh is a digital media designer / creative coder. I explore alternative ways in which digital information has shaped our daily life in order to deliver creative solutions to individuals and educational environments in context of information consumption. I am dedicated in research and developing new methodologies, applications and platforms in digital publishing; how we consume and produce the information in digital environments. 
+      Amir Houieh is a digital media designer / creative coder. I explore alternative ways in which digital information has shaped our daily life in order to deliver creative solutions to individuals and educational environments in context of information consumption. I am dedicated in research and developing new methodologies, applications and platforms in digital publishing; how we consume and produce the information in digital environments.
       Since Oct 2018, I am trying to establish my own little zone (studio/lab?) called XTXT, where I focus on self initiative projects and experiments.
     </p>
 
