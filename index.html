@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)https://portfolio.amir.cloud/ -->
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <style>
+         *{padding:0;margin:0}img{width:100%}a,a:visited,a:active{color:blue;text-decoration:none}h1,h2,h3,h4{font-weight:normal}h1{font-size:50px;text-transform:uppercase}body{padding:50px;font-size:16px;font-family:Georgia,serif}small,figcaption,code{font-size:10px;font-family:monospace}header{padding-bottom:20px}header *{color:black}.blur,.blur *{color:transparent}.blur{text-shadow:black 0 0 25px}
+      </style>
+      <style>
+         .index-item{width:200px}
+         p{
+            font-family: Arial, sans-serif;
+         }
+         .index-item+.index-item{
+          margin-top: 1em;
+         }
+      </style>
+
+      <script>
+
+        const bluryfy = (elem, volume, color) => {
+         elem.style.textShadow = `${color} 0px 0px ${~~volume}px`;
+         elem.style.color = "transparent";
+        };
+         
+        const remap = (value, low1, high1, low2, high2) => {
+         return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+        };
+         
+        const calcDistance = (p1, p2) => {
+         const a = p2.x - p1.x;
+         const b = p2.y - p1.y;
+         return Math.sqrt(a * a + b * b);
+        };
+         
+         const calcElemCenter = (elem) => {
+           const rect = elem.getBoundingClientRect();
+           return {
+               x: rect.x+(rect.width/2),
+               y: rect.y+(rect.height/2),
+           }
+         };
+         
+         const state = {
+           thumbsCenter: [],
+           updateMaxDistance: 1000
+         };
+         
+         const MIN_BLUR = 0;
+         const MAX_BLUR = 75;
+         const DEFAULT_BLUR = 50;
+         const BODY_MARGIN = 50;
+         
+         window.onload = () => {
+           const thumbs = [].slice.call( document.querySelectorAll(".blur") );
+           
+           const updateThumbsCenter = () => {
+               state.thumbsCenter = thumbs.map(calcElemCenter);
+           };
+           
+           const updateMaxDistance = () => {
+               state.maxDistance = calcDistance(
+                   {x: BODY_MARGIN, y: BODY_MARGIN},
+                   {x: window.innerWidth, y: window.innerHeight}
+                   );
+           };
+           
+           updateThumbsCenter();
+           updateMaxDistance();
+           
+           window.onmousemove = (e) => {
+               thumbs.forEach((thumb, i) => {
+                   const thumbCenter = state.thumbsCenter[i];
+                   const mouseCenter = {x: e.clientX, y: e.clientY};
+                   const dx = calcDistance(thumbCenter, mouseCenter);
+                   const blurVolume = remap(dx, 0, state.maxDistance, MIN_BLUR, MAX_BLUR);
+                   bluryfy(thumb, blurVolume, "black");
+               })
+           }
+           
+           window.onresize = () => {
+               updateThumbsCenter();
+               updateMaxDistance();
+           }
+         };
+      </script>
+
+        <title>amir houieh / highlighted projects</title>
+        <meta name="keywords" content="amir" houieh,amirhouieh="">
+        <meta name="description" content="Highlighted projects by amir houieh.">
+        <meta name="copyright" content="amir.cloud">
+        <meta name="language" content="EN">
+        <meta name="Classification" content="Design/Programming">
+        <meta name="author" content="Amir, amir.houieh@gmail.com">
+        <meta name="designer" content="amir houieh">
+        <meta name="owner" content="amir houieh">
+        <meta name="url" content="https://projects.amir.cloud">
+        <meta name="identifier-URL" content="https://projects.amir.cloud">
+        <meta property="og:title" content="amir houieh / highlighted projects">
+        <meta property="og:url" content="https://projects.amir.cloud">
+        <meta property="og:image" content="">
+        <meta property="og:site_name" content="amir houieh">
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="Highlighted projects by amir houieh.">
+        <meta name="twitter:image" content="">
+
+   </head>
+  <body>
+
+    <h1 class="blur">
+      <a href="">
+        /<span style="display: none">Amir Houieh</span>
+      </a>
+    </h1>
+    <br />
+    <br />
+    <p style="max-width: 800px;" class="">
+      Amir Houieh is a digital media designer / creative coder. I explore alternative ways in which digital information has shaped our daily life in order to deliver creative solutions to individuals and educational environments in context of information consumption. I am dedicated in research and developing new methodologies, applications and platforms in digital publishing; how we consume and produce the information in digital environments. 
+      Since Oct 2018, I am trying to establish my own little zone (studio/lab?) called XTXT, where I focus on self initiative projects and experiments.
+    </p>
+
+    <br />
+    <br />
+
+    <div class="index-item blur">
+        <h1>Contact</h1>
+        <small>amir.houieh@gmail.com</small>
+        <br/>
+        <small>+31 627251222</small>
+    </div>
+
+    <div class="index-item blur">
+      <a href="https://portfolio.amir.cloud">
+        <h1>Portfolio</h1>
+      </a>
+      <small>A collection of my highlighted projects</small>
+    </div>
+
+    <div class="index-item blur">
+      <a href="https://archive.amir.cloud">
+        <h1>Visual Pollution</h1>
+      </a>
+      <small>
+        <p>This is a progressive/auto-generated archive of my commitment to visual pollution between 2012 and 2016 at <a href="http://www.kabk.nl">Royal Academy of Art-The Hague</a> where I studied graphic design. The content of this page is programmatically collected and processed from my old HDD drive. The content is updated in form of small batches till the day I finish archiving all the projects of these 4 years</p>
+      </small>
+    </div>
+
+    <div class="index-item blur">
+      <a href="https://www.linkedin.com/in/amirhouieh/">
+        <h1>Résumé/CV</h1>
+      </a>
+      <small>Will redirect you to my Linkedin</small>
+    </div>
+
+  </body>
+</html>
