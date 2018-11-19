@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         * {
             padding: 0;
@@ -30,7 +31,8 @@
         body {
             padding: 50px;
             font-size: 16px;
-            font-family: Georgia, serif
+            font-family: Georgia, serif;
+            overflow-x: hidden;
         }
 
         small, figcaption, code {
@@ -53,6 +55,13 @@
         .blur {
             text-shadow: black 0 0 25px;
         }
+
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 36px;
+            }
+        }
+
     </style>
     <style>
         .index-item {
@@ -134,8 +143,20 @@
                 updateMaxDistance();
             };
 
+            const deviceAgent = navigator.userAgent.toLowerCase();
 
-            if ("ontouchstart" in document.documentElement) {
+            const isTouch = (deviceAgent.match(/(iphone|ipod|ipad)/) ||
+                deviceAgent.match(/(android)/)  ||
+                deviceAgent.match(/(iemobile)/) ||
+                deviceAgent.match(/iphone/i) ||
+                deviceAgent.match(/ipad/i) ||
+                deviceAgent.match(/ipod/i) ||
+                deviceAgent.match(/blackberry/i) ||
+                deviceAgent.match(/bada/i) ||
+                deviceAgent.match(/mobile/i)
+            ) !== null;
+
+            if (isTouch) {
                 console.log("your device is a touch screen device.");
                 [].slice.call(document.links).forEach((link) => {
                     link.dataset.url = link.href;
