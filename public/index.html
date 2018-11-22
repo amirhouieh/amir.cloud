@@ -108,11 +108,24 @@
 
         const MIN_BLUR = 0;
         const MAX_BLUR = 75;
-        const DEFAULT_BLUR = 50;
         const BODY_MARGIN = 50;
 
         window.onload = () => {
             const thumbs = [].slice.call(document.querySelectorAll(".blur"));
+            const deviceAgent = navigator.userAgent.toLowerCase();
+
+            const isTouch = (deviceAgent.match(/(iphone|ipod|ipad)/) ||
+                deviceAgent.match(/(android)/)  ||
+                deviceAgent.match(/(iemobile)/) ||
+                deviceAgent.match(/iphone/i) ||
+                deviceAgent.match(/ipad/i) ||
+                deviceAgent.match(/ipod/i) ||
+                deviceAgent.match(/blackberry/i) ||
+                deviceAgent.match(/bada/i) ||
+                deviceAgent.match(/mobile/i)
+            ) !== null;
+
+            console.log(deviceAgent, isTouch);
 
             const updateThumbsCenter = () => {
                 state.thumbsCenter = thumbs.map(calcElemCenter);
@@ -138,49 +151,46 @@
                 })
             }
 
-            window.onmousemove = (e) => {
-                updateThumbsBlur(e.clientX, e.clientY);
-            }
-
-            window.onresize = () => {
-                updateThumbsCenter();
-                updateMaxDistance();
-            };
-
-            const deviceAgent = navigator.userAgent.toLowerCase();
-
-            const isTouch = (deviceAgent.match(/(iphone|ipod|ipad)/) ||
-                deviceAgent.match(/(android)/)  ||
-                deviceAgent.match(/(iemobile)/) ||
-                deviceAgent.match(/iphone/i) ||
-                deviceAgent.match(/ipad/i) ||
-                deviceAgent.match(/ipod/i) ||
-                deviceAgent.match(/blackberry/i) ||
-                deviceAgent.match(/bada/i) ||
-                deviceAgent.match(/mobile/i)
-            ) !== null;
-
-            if (isTouch) {
+            if( !isTouch ){
+                window.onmousemove = (e) => {
+                    updateThumbsBlur(e.clientX, e.clientY);
+                }
+            } else {
                 console.log("your device is a touch screen device.");
-                [].slice.call(document.links).forEach((link) => {
-                    link.dataset.url = link.href;
-                    link.href = "javascript:;"
 
-                    link.onclick = (event) => {
+                thumbs.forEach((thumb) => {
+                    const link = thumb.querySelector("a");
+
+                    if(link){
+                        thumb.dataset.url = link.href;
+                        link.href = "javascript:;"
+                    }
+
+                    thumb.onclick = (event) => {
+                        console.log(event.clientX, event.clientY);
                         updateThumbsBlur(event.clientX, event.clientY);
                         //reset others
-                        [].slice.call(document.links).forEach((_link)=>{
-                            if(_link.dataset.url !== link.dataset.url){
-                                _link.classList.remove("clicked")
+                        thumbs.forEach((_thumb)=>{
+                            if(_thumb.dataset.url !== thumb.dataset.url){
+                                _thumb.classList.remove("clicked")
                             }
                         });
-                        if(link.classList.contains("clicked")){
-                            window.location.href = link.dataset.url;
+
+                        if(thumb.classList.contains("clicked")){
+                            if(thumb.dataset.url){
+                                window.location.href = thumb.dataset.url;
+                            }
                         }else{
-                            link.classList.add("clicked")
+                            thumb.classList.add("clicked")
                         }
                     };
                 });
+
+                window.onresize = () => {
+                    updateThumbsCenter();
+                    updateMaxDistance();
+                };
+
             }
 
         };
