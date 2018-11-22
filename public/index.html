@@ -115,7 +115,7 @@
             const deviceAgent = navigator.userAgent.toLowerCase();
 
             const isTouch = (deviceAgent.match(/(iphone|ipod|ipad)/) ||
-                deviceAgent.match(/(android)/)  ||
+                deviceAgent.match(/(android)/) ||
                 deviceAgent.match(/(iemobile)/) ||
                 deviceAgent.match(/iphone/i) ||
                 deviceAgent.match(/ipad/i) ||
@@ -151,7 +151,7 @@
                 })
             }
 
-            if( !isTouch ){
+            if (!isTouch) {
                 window.onmousemove = (e) => {
                     updateThumbsBlur(e.clientX, e.clientY);
                 }
@@ -161,7 +161,7 @@
                 thumbs.forEach((thumb) => {
                     const link = thumb.querySelector("a");
 
-                    if(link){
+                    if (link) {
                         thumb.dataset.url = link.href;
                         link.href = "javascript:;"
                     }
@@ -170,17 +170,17 @@
                         console.log(event.clientX, event.clientY);
                         updateThumbsBlur(event.clientX, event.clientY);
                         //reset others
-                        thumbs.forEach((_thumb)=>{
-                            if(_thumb.dataset.url !== thumb.dataset.url){
+                        thumbs.forEach((_thumb) => {
+                            if (_thumb.dataset.url !== thumb.dataset.url) {
                                 _thumb.classList.remove("clicked")
                             }
                         });
 
-                        if(thumb.classList.contains("clicked")){
-                            if(thumb.dataset.url){
+                        if (thumb.classList.contains("clicked")) {
+                            if (thumb.dataset.url) {
                                 window.location.href = thumb.dataset.url;
                             }
-                        }else{
+                        } else {
                             thumb.classList.add("clicked")
                         }
                     };
@@ -216,6 +216,47 @@
     <meta property="og:description" content="Amir Houieh is a digital media designer / creative coder. I explore alternative ways in which digital information has shaped our daily life in order to deliver creative solutions to individuals and educational environments in context of information consumption. I am dedicated in research and developing new methodologies, applications and platforms in digital publishing; how we consume and produce the information in digital environments.
       Since Oct 2018, I am trying to establish my own little zone (studio/lab?) called XTXT, where I focus on self initiative projects and experiments.">
     <meta name="twitter:image" content="https://amir.cloud/site-thumb.png">
+
+    <script type='application/ld+json'>
+{
+	"@context": "http://schema.org/",
+	"@type": "WebSite",
+	"accountablePerson": {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Den Haag, The Netherlands",
+            "postalCode": "2512 AR",
+            "streetAddress": "Paviljoensgracht 20"
+        },
+        "email": "amir.houieh@gmail.com",
+        "image": "https://yt3.ggpht.com/a-/ACSszfEJ9AQACF5UyZAQLNf7l6u5flKWpvt-0LdOnA=s900-mo-c-c0xffffffff-rj-k-no",
+        "jobTitle": "Design Technologist",
+        "name": "Amir Houieh",
+        "url": "https://amir.cloud",
+        "alumniOf": "Royal Academy of Art, The Hague",
+        "owns": [
+            "xtxt",
+            "schoolhub"
+        ],
+        "sameAs" : [
+                  "https://www.linkedin.com/in/amirhouieh",
+                  "https://github.com/amirhouieh",
+                  "https://vimeo.com/user13046302",
+                  "https://twitter.com/amirhouieh"
+                ]
+
+    },
+	"alternativeHeadline": "Amir Houieh; designer / creative coder",
+	"keywords": "amir houieh, amirhouieh, interactive design, digital publishing, experimental publishing",
+	"text": "Amir Houieh is a digital media designer / creative coder. I explore alternative ways in which digital information has shaped our daily life in order to deliver creative solutions to individuals and educational environments in context of information consumption. I am dedicated in research and developing new methodologies, applications and platforms in digital publishing; how we consume and produce the information in digital environments.       Since Oct 2018, I am trying to establish my own little zone (studio/lab?) called XTXT, where I focus on self initiative projects and experiments.",
+	"thumbnailUrl": "https://amir.cloud/site-thumb.png"
+}
+
+    </script>
+
+
 </head>
 <body>
 
@@ -227,23 +268,14 @@
 <br/>
 <br/>
 <p style="max-width: 800px;" class="">
-    Amir Houieh is a digital media designer / creative coder. I explore alternative ways in which digital information
-    has shaped our daily life in order to deliver creative solutions to individuals and educational environments in
-    context of information consumption. I am dedicated in research and developing new methodologies, applications and
-    platforms in digital publishing; how we consume and produce the information in digital environments.
-    Since Oct 2018, I am trying to establish my own little zone (studio/lab?) called XTXT, where I focus on self
+    Amir Houieh is a digital media designer / creative coder. I explore alternative ways in which digital information has shaped our daily life in order to deliver creative solutions to individuals and educational environments in context of information consumption. I am dedicated in research and developing new methodologies, applications and
+    platforms in digital publishing; how we consume and produce the information in digital environments. Since Oct 2018, I am trying to establish my own little zone (studio/lab?) called XTXT, where I focus on self
     initiative projects and experiments.
+    As September 2017, I have been teaching at Graphic Design department at Artez, University of Arts in Arnhem, The Netherlands. My course is titles Digital Media in which we focus on the intersection of technology and programming and design.
 </p>
 
 <br/>
 <br/>
-
-<div class="index-item blur">
-    <h1>Contact</h1>
-    <small>amir.houieh@gmail.com</small>
-    <br/>
-    <small>+31 627251222</small>
-</div>
 
 <div class="index-item blur">
     <a href="https://portfolio.amir.cloud">
@@ -269,6 +301,13 @@
         <h1>Résumé/CV</h1>
     </a>
     <small>Will redirect you to my Linkedin</small>
+</div>
+
+<div class="index-item blur">
+    <h1>Contact</h1>
+    <small>amir.houieh@gmail.com</small>
+    <br/>
+    <small><a href="https://github.com/amirhouieh/">Github profile<a/></small>
 </div>
 
 </body>
