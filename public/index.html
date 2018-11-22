@@ -128,14 +128,18 @@
             updateThumbsCenter();
             updateMaxDistance();
 
-            window.onmousemove = (e) => {
+            const updateThumbsBlur = (x, y) => {
                 thumbs.forEach((thumb, i) => {
                     const thumbCenter = state.thumbsCenter[i];
-                    const mouseCenter = {x: e.clientX, y: e.clientY};
+                    const mouseCenter = {x, y};
                     const dx = calcDistance(thumbCenter, mouseCenter);
                     const blurVolume = remap(dx, 0, state.maxDistance, MIN_BLUR, MAX_BLUR);
                     bluryfy(thumb, blurVolume, "black");
                 })
+            }
+
+            window.onmousemove = (e) => {
+                updateThumbsBlur(e.clientX, e.clientY);
             }
 
             window.onresize = () => {
@@ -161,7 +165,9 @@
                 [].slice.call(document.links).forEach((link) => {
                     link.dataset.url = link.href;
                     link.href = "javascript:;"
-                    link.onclick = () => {
+
+                    link.onclick = (event) => {
+                        updateThumbsBlur(event.clientX, event.clientY);
                         //reset others
                         [].slice.call(document.links).forEach((_link)=>{
                             if(_link.dataset.url !== link.dataset.url){
