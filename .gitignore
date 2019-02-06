@@ -8,3 +8,5 @@ env**
 .idea
 .idea/*
 .idea/**.*
+
+dist
