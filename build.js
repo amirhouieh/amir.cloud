@@ -11,7 +11,6 @@ const HTML_PATH = path.resolve('dist/index.html');
             compress: false,
             rootpath: path.resolve('')
         });
-        console.log(html);
 
     }catch (e) {
         console.log(e);
