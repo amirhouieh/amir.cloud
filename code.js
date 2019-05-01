@@ -71,7 +71,7 @@ window.onload = () => {
         }
     } else {
         console.log("your device is a touch screen device.");
-        MAX_BLUR = 30;
+        MAX_BLUR = 10;
 
         thumbs.forEach((thumb) => {
             const link = thumb.querySelector("a");
