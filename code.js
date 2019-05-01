@@ -41,6 +41,10 @@ window.onload = () => {
 
     console.log(deviceAgent, isTouch);
 
+    if(isTouch){
+        MAX_BLUR = 15;
+    }
+
     const updateThumbsCenter = () => {
         state.thumbsCenter = thumbs.map(calcElemCenter);
     };
@@ -70,8 +74,8 @@ window.onload = () => {
             updateThumbsBlur(e.clientX, e.clientY);
         }
     } else {
-        console.log("your device is a touch screen device.");
-        MAX_BLUR = 10;
+    
+        console.log("your device is a touch screen device.", MAX_BLUR);
 
         thumbs.forEach((thumb) => {
             const link = thumb.querySelector("a");
