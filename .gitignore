@@ -5,11 +5,6 @@ env**
 .firebase
 .firebase**
 
-/.idea
-.idea
-.idea/*
-.idea/**.*
-
 dist
 
 node_modules
