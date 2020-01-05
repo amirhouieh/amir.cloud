@@ -22,7 +22,7 @@ const state = {
     updateMaxDistance: 1000
 };
 const MIN_BLUR = 0;
-let MAX_BLUR = 75;
+let MAX_BLUR = 45;
 const BODY_MARGIN = 50;
 window.onload = () => {
     const thumbs = [].slice.call(document.querySelectorAll(".blur"));
