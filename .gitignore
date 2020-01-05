@@ -5,9 +5,4 @@ env**
 .firebase
 .firebase**
 
-/.idea
-.idea
-.idea/*
-.idea/**.*
-
 dist
